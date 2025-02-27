@@ -6,21 +6,7 @@ import java.util.List;
 
 
 
-@lombok.Data
-public class Nationality {
-
-    private long count;
-    private String name;
-
-    @SerializedName("country")
-    private List<Country> countries;
-
-
-    public static class Country {
-
-        private String countryId;
-        private float probability;
-
-    }
+public record Nationality(long count, String name, @SerializedName("country") List<Country> countries) {
+    public record Country(String countryId, float probability) {}
 
 }
